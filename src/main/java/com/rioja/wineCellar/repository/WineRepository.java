@@ -1,14 +1,14 @@
 package com.rioja.wineCellar.repository;
 
-import com.rioja.wineCellar.model.Wine;
+import com.rioja.wineCellar.model.Elemento;
 
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface WineRepository extends CrudRepository<Wine, String> {
+public interface WineRepository extends CrudRepository<Elemento, String> {
     @Query("SELECT * FROM WINE WHERE WINE.YEAR= :year")
-    public Iterable<Wine> retrieveWinesByYear(int year);
+    public Iterable<Elemento> retrieveWinesByYear(int year);
 
     @Query("SELECT * FROM WINE WHERE WINE.ID= :id")
-    public Iterable<Wine> retrieveWine(String id);
+    public Iterable<Elemento> retrieveWine(String id);
 }

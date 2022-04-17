@@ -22,41 +22,33 @@ public class ElementoController {
     private ElementoService elementoService;
     //esto lo hago siempre, me lo cargo 
     
-    @GetMapping("/wines")
-    public ResponseEntity<Iterable<ElementoController>> retrieveWines(@RequestParam(required=false) String foodName) {
+    @GetMapping("/elemento")
+    public ResponseEntity<Iterable<ElementoController>> getElemento(@RequestParam(required=false) String foodName) {
         //me va a devolver esto cada vez q llame a este método
-        Iterable<Elemento> response = elementoService.retrieveWines(foodName);
+        Iterable<ElementoController> response = elementoService.getElemento(foodName);
         return ResponseEntity.ok().body(response);
     }
 
-    // @PostMapping("/wines")
-    // public ResponseEntity<Wine> createWine(@RequestBody Wine wine) {
-    //     Wine newWine = wineService.createWine(wine);
-    //     return ResponseEntity.ok().body(newWine);
-    // }
-
-    @GetMapping("/wines/{id}/")
-    public ResponseEntity<Elemento> retrieveWine(@PathVariable String id) {
-        Elemento response = wineService.retrieveWine(id);
+    @GetMapping("/elemento/{id}/")
+    public ResponseEntity<Elemento> getElemento(@PathVariable String id) {
+        Elemento response = elementoService.getElemento(id);
         return ResponseEntity.ok().body(response);
     }
 
-    @PutMapping("/wines/{id}/") //en internet no lo pones entre corchetes
-    public ResponseEntity<Elemento> updateWine(@PathVariable String id, @RequestBody Elemento wine) {
-        Elemento newWine = wineService.updateWine(id, wine);
-        if (newWine == null) {
+    @PutMapping("/elemento/{id}/") //en internet no lo pones entre corchetes
+    public ResponseEntity<Elemento> updateElemento(@PathVariable String id, @RequestBody Elemento elemento) {
+        Elemento newElemento = elementoService.updateElemento(id, elemento);
+        if (newElemento == null) {
             return ResponseEntity.badRequest().body(null);
         }
-        return ResponseEntity.ok().body(newWine);
+        return ResponseEntity.ok().body(newElemento);
     }
 
-    @DeleteMapping("/wines/{id}")
-    public ResponseEntity<Elemento> deleteWine(@PathVariable String id) {
-        wineService.deleteWine(id);
+    @DeleteMapping("/elemento/{id}")
+    public ResponseEntity<Elemento> deleteElemento @PathVariable String id) {
+        elementoService.deleteElemento(id);
         return ResponseEntity.noContent().build();
     }
     
 }
 
-// /wines/ (Crear, Coger)
-// /wines/{id} (Coger un elemento, actualizar, eleminar)

@@ -10,9 +10,10 @@ import lombok.Data;
 @Data
 @Builder
 @Table("PEDIDO")
-public class Elemento {
+public class Pedido {
     private @Column("FOOD_ID") @Id int foodId;
 	private @Column("FOOD_NAME") char foodName;
 	private @Column("PRICE") float price;
 
 }
+
