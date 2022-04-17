@@ -1,6 +1,6 @@
 package com.rioja.wineCellar.service.implementation;
 
-import com.rioja.wineCellar.model.Wine;
+import com.rioja.wineCellar.model.Elemento;
 import com.rioja.wineCellar.repository.WineRepository;
 import com.rioja.wineCellar.service.WineService;
 
@@ -13,7 +13,7 @@ public class WineServiceImplementation implements WineService {
     private WineRepository wineRepository;
     
     @Override
-    public Iterable<Wine> retrieveWines(String year) {
+    public Iterable<Elemento> retrieveWines(String year) {
         if (year == null) {
             return wineRepository.findAll();
         } else {
@@ -23,11 +23,11 @@ public class WineServiceImplementation implements WineService {
     }
 
     @Override
-    public Wine retrieveWine(String id) {
-        Wine response = null;
+    public Elemento retrieveWine(String id) {
+        Elemento response = null;
         if (wineRepository.existsById(id)) {
-            Iterable<Wine> wines = wineRepository.retrieveWine(id);
-            for (Wine wine : wines) {
+            Iterable<Elemento> wines = wineRepository.retrieveWine(id);
+            for (Elemento wine : wines) {
                 response = wine;
             }
             return response;
@@ -36,7 +36,7 @@ public class WineServiceImplementation implements WineService {
     }
 
     @Override
-    public Wine updateWine(String id, Wine wine) {
+    public Elemento updateWine(String id, Elemento wine) {
         if (wineRepository.existsById(id)) {
             return wineRepository.save(wine);
         } else {
