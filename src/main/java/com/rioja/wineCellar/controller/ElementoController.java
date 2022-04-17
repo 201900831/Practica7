@@ -23,9 +23,9 @@ public class ElementoController {
     //esto lo hago siempre, me lo cargo 
     
     @GetMapping("/wines")
-    public ResponseEntity<Iterable<ElementoController>> retrieveWines(@RequestParam(required=false) String year) {
+    public ResponseEntity<Iterable<ElementoController>> retrieveWines(@RequestParam(required=false) String foodName) {
         //me va a devolver esto cada vez q llame a este método
-        Iterable<Elemento> response = wineService.retrieveWines(year);
+        Iterable<Elemento> response = elementoService.retrieveWines(foodName);
         return ResponseEntity.ok().body(response);
     }
 
